@@ -10,30 +10,28 @@ public class Baek_18352 {
     private static int K;
     private static int X;
     private static int[] dist;
-    private static ArrayList<Integer> graph[];
-    private static PriorityQueue<Integer> pq = new PriorityQueue<>();
+    private static ArrayList<Integer>[] graph;
+    private static Queue<Integer> Q = new LinkedList<>();
     private static void dijkstra(){
-        for(Integer i : graph[X]){
-            dist[i] = 1;
-            pq.offer(i);
-        }
-        while(!pq.isEmpty()){
-            int temp = pq.poll();
-            for(Integer i : graph[temp]){
-                dist[i] = Math.min(dist[i],dist[temp]+1);
-                pq.offer(i);
+        while(!Q.isEmpty()){
+            int temp = Q.poll();
+            for(Integer i : graph[temp]) {
+                if(dist[i] == -1) {
+                    dist[i] = dist[temp] + 1;
+                    Q.offer(i);
+                }
             }
         }
     }
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(bf.readLine()," ");
-        N=Integer.parseInt(st.nextToken()); // 도시 수
-        M=Integer.parseInt(st.nextToken()); // 도시 사이 간선
-        K=Integer.parseInt(st.nextToken()); // 최단 거리가 K인 도시를 뽑아야됨
-        X=Integer.parseInt(st.nextToken()); // 도시 X에서 시작함
+        N=Integer.parseInt(st.nextToken());
+        M=Integer.parseInt(st.nextToken());
+        K=Integer.parseInt(st.nextToken());
+        X=Integer.parseInt(st.nextToken());
         dist = new int[N+1];
-        Arrays.fill(dist,Integer.MAX_VALUE);
+        Arrays.fill(dist,-1);
         graph = new ArrayList[N+1];
         for(int i=0;i<=N;i++)
             graph[i] = new ArrayList<>();
@@ -45,6 +43,7 @@ public class Baek_18352 {
             graph[start].add(arrive);
         }
         dist[X]=0;
+        Q.offer(X);
         dijkstra();
         boolean check = false;
         for(int i=1;i<=N;i++){
@@ -53,7 +52,7 @@ public class Baek_18352 {
                 check = true;
             }
         }
-        if(check==false)
+        if(!check)
             System.out.println(-1);
     }
 }
