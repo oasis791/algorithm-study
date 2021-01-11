@@ -81,6 +81,7 @@ public class Baek_17144 {
                                     temp = temp2;
                                     nextR++;
                                 }
+                                count++;
                                 break;
                             case 1: // 아랫부분
                                 temp = A[i][j+1];
@@ -106,6 +107,7 @@ public class Baek_17144 {
                                     int temp2 = A[nextR][nextC];
                                     A[nextR][nextC] = temp;
                                     temp = temp2;
+                                    nextC--;
                                 }
                                 nextC++;
                                 nextR -= 1;
@@ -115,6 +117,7 @@ public class Baek_17144 {
                                     temp = temp2;
                                     nextR--;
                                 }
+                                count++;
                                 break;
                             default:
                                 break;
