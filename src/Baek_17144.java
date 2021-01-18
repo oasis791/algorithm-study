@@ -40,91 +40,91 @@ public class Baek_17144 {
     }
     private static void cycle(){
         int count = 0;
-        for(int i=1;i<=R;i++){
-            for(int j=1;j<=C;j++){
-                if(count == 2)
-                    break;
-                else{
-                    if(A[i][j] == -1){
-                        switch (count){
-                            case 0: // 윗부분
-                                int temp = A[i][j+1];
-                                A[i][j+1] = 0;
-                                int nextC = j + 2;
-                                while(nextC<=C){
-                                    int temp2 = A[i][nextC];
-                                    A[i][nextC] = temp;
-                                    temp = temp2;
-                                    nextC++;
-                                }
-                                nextC--;
-                                int nextR = i - 1;
-                                while(nextR>=1){
-                                    int temp2 =A[nextR][nextC];
-                                    A[nextR][nextC] = temp;
-                                    temp = temp2;
-                                    nextR--;
-                                }
-                                nextR++;
-                                nextC -= 1;
-                                while(nextC>=1){
-                                    int temp2 = A[nextR][nextC];
-                                    A[nextR][nextC] = temp;
-                                    temp = temp2;
-                                    nextC--;
-                                }
-                                nextC++;
-                                nextR += 1;
-                                while(nextR!=i){
-                                    int temp2 = A[nextR][nextC];
-                                    A[nextR][nextC] = temp;
-                                    temp = temp2;
-                                    nextR++;
-                                }
-                                count++;
-                                break;
-                            case 1: // 아랫부분
-                                temp = A[i][j+1];
-                                A[i][j+1] = 0;
-                                nextC = j + 2;
-                                while(nextC<=C){
-                                    int temp2 = A[i][nextC];
-                                    A[i][nextC] = temp;
-                                    temp = temp2;
-                                    nextC++;
-                                }
-                                nextC--;
-                                nextR = i + 1;
-                                while(nextR<=R){
-                                    int temp2 =A[nextR][nextC];
-                                    A[nextR][nextC] = temp;
-                                    temp = temp2;
-                                    nextR++;
-                                }
-                                nextR--;
-                                nextC -= 1;
-                                while(nextC>=1){
-                                    int temp2 = A[nextR][nextC];
-                                    A[nextR][nextC] = temp;
-                                    temp = temp2;
-                                    nextC--;
-                                }
-                                nextC++;
-                                nextR -= 1;
-                                while(nextR!=i){
-                                    int temp2 = A[nextR][nextC];
-                                    A[nextR][nextC] = temp;
-                                    temp = temp2;
-                                    nextR--;
-                                }
-                                count++;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
-            }
+            for(int i=1;i<=R;i++){
+               for(int j=1;j<=C;j++) {
+                   if (count == 2)
+                       break;
+                   else {
+                       if (A[i][j] == -1) {
+                           switch (count) {
+                               case 0: // 윗부분
+                                   int temp = A[i][j + 1];
+                                   A[i][j + 1] = 0;
+                                   int nextC = j + 2;
+                                   while (nextC <= C) {
+                                       int temp2 = A[i][nextC];
+                                       A[i][nextC] = temp;
+                                       temp = temp2;
+                                       nextC++;
+                                   }
+                                   nextC--;
+                                   int nextR = i - 1;
+                                   while (nextR >= 1) {
+                                       int temp2 = A[nextR][nextC];
+                                       A[nextR][nextC] = temp;
+                                       temp = temp2;
+                                       nextR--;
+                                   }
+                                   nextR++;
+                                   nextC -= 1;
+                                   while (nextC >= 1) {
+                                       int temp2 = A[nextR][nextC];
+                                       A[nextR][nextC] = temp;
+                                       temp = temp2;
+                                       nextC--;
+                                   }
+                                   nextC++;
+                                   nextR += 1;
+                                   while (nextR != i) {
+                                       int temp2 = A[nextR][nextC];
+                                       A[nextR][nextC] = temp;
+                                       temp = temp2;
+                                       nextR++;
+                                   }
+                                   count++;
+                                   break;
+                               case 1: // 아랫부분
+                                   temp = A[i][j + 1];
+                                   A[i][j + 1] = 0;
+                                   nextC = j + 2;
+                                   while (nextC <= C) {
+                                       int temp2 = A[i][nextC];
+                                       A[i][nextC] = temp;
+                                       temp = temp2;
+                                       nextC++;
+                                   }
+                                   nextC--;
+                                   nextR = i + 1;
+                                   while (nextR <= R) {
+                                       int temp2 = A[nextR][nextC];
+                                       A[nextR][nextC] = temp;
+                                       temp = temp2;
+                                       nextR++;
+                                   }
+                                   nextR--;
+                                   nextC -= 1;
+                                   while (nextC >= 1) {
+                                       int temp2 = A[nextR][nextC];
+                                       A[nextR][nextC] = temp;
+                                       temp = temp2;
+                                       nextC--;
+                                   }
+                                   nextC++;
+                                   nextR -= 1;
+                                   while (nextR != i) {
+                                       int temp2 = A[nextR][nextC];
+                                       A[nextR][nextC] = temp;
+                                       temp = temp2;
+                                       nextR--;
+                                   }
+                                   count++;
+                                   break;
+                               default:
+                                   break;
+                           }
+                       }
+                   }
+               }
             if(count == 2)
                 break;
         }
