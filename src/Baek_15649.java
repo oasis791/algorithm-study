@@ -11,7 +11,6 @@ public class Baek_15649 {
     private static boolean[] visited;
     private static int[] result;
     private static int[] num;
-    private static StringBuilder sb = new StringBuilder();
     private static void dfs(int index,int count){
         result[count - 1] = num[index];
         visited[index] = true;
@@ -26,7 +25,6 @@ public class Baek_15649 {
             for (int i = 0; i < N; i++) {
                 visited = Arrays.copyOf(temp, temp.length);
                 if (!visited[i]) {
-                    sb.append(" " + num[i]);
                     dfs(i, count + 1);
                     visited[i] = true;
                 }
@@ -45,7 +43,6 @@ public class Baek_15649 {
             num[i] = initNum++;
         for (int i = 0; i < N; i++) {
             visited = new boolean[N];
-            sb.append(num[i]);
             dfs(i,1);
         }
     }
