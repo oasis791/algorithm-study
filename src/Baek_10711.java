@@ -1,3 +1,4 @@
+//10711번 모래성
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
