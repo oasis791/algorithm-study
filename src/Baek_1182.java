@@ -42,5 +42,6 @@ public class Baek_1182 {
             dfs(i, 0,visited);
         }
         System.out.println(count);
+
     }
 }
