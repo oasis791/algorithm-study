@@ -1,5 +1,4 @@
 //1182번 부분수열의 합
-//
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -42,6 +41,5 @@ public class Baek_1182 {
             dfs(i, 0,visited);
         }
         System.out.println(count);
-
     }
 }
