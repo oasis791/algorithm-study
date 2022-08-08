@@ -1,4 +1,10 @@
-# Algorithm Study
-## 알고리즘 공부 입니다.
-### 사용 사이트
-+ https://acmicpc.net
+Algorithm Study
+---
+
+> ### 백준 알고리즘
+> 
+> https://acmicpc.net
+> 
+> ### 프로그래머스
+> 
+> https://programmers.co.kr
