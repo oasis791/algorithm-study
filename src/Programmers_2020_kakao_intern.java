@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Programmer_2020_kakao_intern {
+public class Programmers_2020_kakao_intern {
     static class Solution {
         public String solution(int[] numbers, String hand) {
             StringBuilder sb = new StringBuilder();
