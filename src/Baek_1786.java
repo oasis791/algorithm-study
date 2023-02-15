@@ -1,61 +1,54 @@
-//1786번 찾기 (KMP)
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Baek_1786 {
-    private static int count = 0;
-    private static ArrayList<Integer> result = new ArrayList<>();
-    private static int[] getPi(String pattern, int size) {
-        int[] pi = new int[size];
-        int index = 0;
-        pi[0] = 0;
-        for (int i = 1; i < size; i++) {
-            if (pattern.charAt(index) != pattern.charAt(i)) {
-                if (index == 0) {
-                    continue;
-                }
-                index = pi[index - 1];
-            }
-            if (pattern.charAt(index) == pattern.charAt(i)) {
-                pi[i] = ++index;
-            }
-        }
-        return pi;
-    }
     public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        String mainString = bf.readLine();
-        String subString = bf.readLine();
-        int n = mainString.length(), m = subString.length(), j = 0;
-        int[] pi = getPi(subString, m);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        for (int i = 0; i < n; i++) {
-            if (mainString.charAt(i) != subString.charAt(j)) {
-                if (j == 0) {
-                    continue;
-                }
-                j = pi[j - 1];
+        String text = br.readLine();
+        String pattern = br.readLine();
+
+        int[] table = new int[pattern.length()];
+        int idx = 0;
+        for (int i = 1; i < table.length; i++) {
+            while (idx > 0 && pattern.charAt(i) != pattern.charAt(idx)) {
+                idx = table[idx - 1];
             }
 
-            if (mainString.charAt(i) == subString.charAt(j)) {
-                if (j == m - 1) {
-                    count++;
-                    result.add(i - m + 2);
-                    j = pi[j];
+            if (pattern.charAt(i) == pattern.charAt(idx)) {
+                idx += 1;
+                table[i] = idx;
+            }
+        }
+
+        int begin = 0, matched = 0;
+        int answer = 0;
+        Queue<Integer> queue = new LinkedList<>();
+
+        while (begin <= text.length() - pattern.length()) {
+            if (matched < pattern.length() && text.charAt(begin + matched) == pattern.charAt(matched)) {
+                ++matched;
+                if (matched == pattern.length()) {
+                    answer++;
+                    queue.add(begin + 1);
+                }
+            } else {
+                if (matched == 0) {
+                    ++begin;
                 } else {
-                    j++;
+                    begin += matched - table[matched - 1];
+                    matched = table[matched - 1];
                 }
             }
         }
 
-        System.out.println(count);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < result.size(); i++) {
-            sb.append(result.get(i));
-            sb.append(" ");
+        bw.write(answer + "\n");
+        while (!queue.isEmpty()){
+            bw.write(queue.poll() + "\n");
         }
-        System.out.println(sb);
+
+        bw.close();
     }
 }
