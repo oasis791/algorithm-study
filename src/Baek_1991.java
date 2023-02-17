@@ -44,9 +44,9 @@ public class Baek_1991 {
             }
         }
 
-        System.out.println(preorder(tree));
-        System.out.println(inorder(tree));
-        System.out.println(postorder(tree));
+        System.out.println(preorder(tree.get("A"), new StringBuilder()));
+        System.out.println(inorder(tree.get("A"), new StringBuilder()));
+        System.out.println(postorder(tree.get("A"), new StringBuilder()));
     }
 
     static class Node {
@@ -74,16 +74,8 @@ public class Baek_1991 {
             return left;
         }
 
-        public void setLeft(Node left) {
-            this.left = left;
-        }
-
         public Node getRight() {
             return right;
-        }
-
-        public void setRight(Node right) {
-            this.right = right;
         }
 
         public Node getParentNode() {
@@ -93,23 +85,55 @@ public class Baek_1991 {
         public void setParentNode(Node parentNode) {
             this.parentNode = parentNode;
         }
+
+        public void setLeft(Node left) {
+            this.left = left;
+        }
+
+        public void setRight(Node right) {
+            this.right = right;
+        }
     }
 
-    static String preorder(Map<String, Node> tree) {
-        StringBuilder sb = new StringBuilder();
-
+    static String preorder(Node node, StringBuilder sb) {
+        // 현재노드
+        sb.append(node.getData());
+        // 좌측 노드
+        if (node.getLeft() != null) {
+            preorder(node.getLeft(), sb);
+        }
+        // 우측노드
+        if (node.getRight() != null) {
+            preorder(node.getRight(), sb);
+        }
         return sb.toString();
     }
 
-    static String inorder(Map<String, Node> tree) {
-        StringBuilder sb = new StringBuilder();
-
+    static String inorder(Node node, StringBuilder sb) {
+        //좌측노드
+        if (node.getLeft() != null) {
+            inorder(node.getLeft(), sb);
+        }
+        //현재노드
+        sb.append(node.getData());
+        //우측노드
+        if (node.getRight() != null) {
+            inorder(node.getRight(), sb);
+        }
         return sb.toString();
     }
 
-    static String postorder(Map<String, Node> tree) {
-        StringBuilder sb = new StringBuilder();
-
+    static String postorder(Node node, StringBuilder sb) {
+        //좌측노드
+        if (node.getLeft() != null) {
+            postorder(node.getLeft(), sb);
+        }
+        //우측노드
+        if (node.getRight() != null) {
+            postorder(node.getRight(), sb);
+        }
+        //현재노드
+        sb.append(node.getData());
         return sb.toString();
     }
 }
