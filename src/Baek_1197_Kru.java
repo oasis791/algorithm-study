@@ -54,7 +54,7 @@ public class Baek_1197_Kru {
         if (parents[x] == x) {
             return x;
         } else {
-            return find(parents[x]);
+            return parents[x] = find(parents[x]);
         }
     }
 
