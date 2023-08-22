@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Programmers_131127 {
-    class Solution {
+    static class Solution {
         public int solution(String[] want, int[] number, String[] discount) {
             int answer = 0;
             Map<String, Integer> map = new HashMap<>();
