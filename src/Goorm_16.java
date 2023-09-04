@@ -9,7 +9,7 @@ public class Goorm_16 {
         StringTokenizer st = new StringTokenizer(bf.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-        int[][] graph = new int[n + 1][n + 1];
+        boolean[][] graph = new boolean[n + 1][n + 1];
         boolean[] visited = new boolean[n + 1];
 
         for (int i = 0; i < m; i++) {
@@ -17,7 +17,7 @@ public class Goorm_16 {
             int s = Integer.parseInt(st.nextToken());
             int e = Integer.parseInt(st.nextToken());
 
-            graph[s][e] = 1;
+            graph[s][e] = true;
         }
 
         int answer = 0;
@@ -32,12 +32,12 @@ public class Goorm_16 {
         System.out.println(answer);
     }
 
-    static void dfs(int node, int[][] graph, int n, boolean[] visited) {
+    static void dfs(int node, boolean[][] graph, int n, boolean[] visited) {
         for (int i = 1; i <= n; i++) {
             if(i == node)
                 continue;
-            if (graph[node][i] == 1 && !visited[i]) {
-                if (graph[i][node] == 1) {
+            if (graph[node][i] && !visited[i]) {
+                if (graph[i][node]) {
                     visited[i] = true;
                     dfs(i, graph, n, visited);
                 }
