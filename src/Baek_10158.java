@@ -1,35 +1,36 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Baek_10158 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int w = Integer.parseInt(st.nextToken());
-        int h = Integer.parseInt(st.nextToken());
-        st = new StringTokenizer(br.readLine());
-        int p = Integer.parseInt(st.nextToken());
-        int q = Integer.parseInt(st.nextToken());
+        StringBuilder sb = new StringBuilder();
+        String[] info = br.readLine().split(" ");
+        int W = Integer.parseInt(info[0]);
+        int H = Integer.parseInt(info[1]);
+
+        String[] pos = br.readLine().split(" ");
+        int x = Integer.parseInt(pos[0]);
+        int y = Integer.parseInt(pos[1]);
+
         int t = Integer.parseInt(br.readLine());
-        int x = 0;
-        int y = 0;
+        int xCnt = (x + t) / W;
+        int yCnt = (y + t) / H;
+        int p, q;
 
-        int p_quo = (int) (p + t) / w;
-        int p_rem = (p + t) % w;
-        if (p_quo % 2 == 0) {
-            x = p_rem;
+        if (xCnt % 2 == 0) {
+            p = (x + t) % W;
         } else {
-            x = w - p_rem;
+            p = W - ((x + t) % W);
         }
-
-        int q_quo = (int) (q + t) / h;
-        int q_rem = (q + t) % h;
-        if (q_quo % 2 == 0) {
-            y = q_rem;
+        if (yCnt % 2 == 0) {
+            q = (y + t) % H;
         } else {
-            y = h - q_rem;
+            q = H - ((y + t) % H);
         }
-        System.out.println(x + " " + y);
+        sb.append(p).append(" ").append(q);
+        System.out.println(sb);
     }
+
 }
