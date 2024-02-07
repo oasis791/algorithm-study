@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Programmers_172927 {
-    class Solution {
+    static class Solution {
         static int answer = Integer.MAX_VALUE;
         static HashMap<String, Integer> indexMap;
         static int[][] info = new int[][] {{1, 1, 1}, {5, 1, 1}, {25, 5, 1}};
