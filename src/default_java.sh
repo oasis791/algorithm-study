@@ -19,3 +19,5 @@ public class $base_name {
 EOL
 
 echo "Java file '$1' has been created."
+
+vi "$1"
